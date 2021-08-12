@@ -1,0 +1,999 @@
+<%- include ('header.ejs') %>
+    <!--begin::Wrapper-->
+    <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+        <!--begin::Content-->
+        <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+            <!--begin::Subheader-->
+            <div class="subheader py-3 py-lg-8 subheader-transparent" id="kt_subheader">
+                <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+                    <!--begin::Info-->
+                    <div class="d-flex align-items-center mr-1">
+                        <!--begin::Page Heading-->
+                        <div class="d-flex align-items-baseline flex-wrap mr-5">
+                            <!--begin::Page Title-->
+                            <h2 class="d-flex align-items-center text-dark font-weight-bold my-1 mr-3">View Profile</h2>
+                            <!--end::Page Title-->
+                        </div>
+                        <!--end::Page Heading-->
+                    </div>
+                    <!--end::Info-->
+                    <!--begin::Toolbar-->
+                    <div class="d-flex align-items-center flex-wrap">
+                        <!--begin::Button-->
+                        <%=msg%>
+                            <!--end::Button-->
+                    </div>
+                    <div></div>
+                    <!--end::Toolbar-->
+                </div>
+            </div>
+            <!--end::Subheader-->
+            <!--begin::Entry-->
+            <div class="d-flex flex-column-fluid">
+                <!--begin::Container-->
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12 col-xl-12 col-md-12">
+                            <div class="card card-custom gutter-b">
+                                <div class="card-body">
+
+                                    <div class="form-group row">
+                                        <div class="col-md-4">
+                                            <label class="font-weight-bold">Name</label>
+                                            <input type="text" value="<%=userData.name%>" class="form-control"
+                                                placeholder="Name" disabled>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="font-weight-bold">Email</label>
+                                            <input type="text" value="<%=userData.emailId%>" class="form-control"
+                                                placeholder="Email" disabled>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="font-weight-bold">Country Code</label>
+                                            <input type="text" value="<%=userData.countryCode%>" class="form-control"
+                                                placeholder="Country Code" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-4">
+                                            <label class="font-weight-bold">Mobile Number</label>
+                                            <input type="number" value="<%=userData.mobileNumber%>" class="form-control"
+                                                placeholder="mobileNumber" disabled>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="font-weight-bold">Service Type</label>
+
+                                            <div class="d-block px-2 py-2">
+
+
+                                                <%if(userData.serviceType.length> 0 && userData.serviceType[0]!= ""){%>
+                                                    <% userData.serviceType.forEach(function(data){%>
+                                                        <span
+                                                            class="label label-primary label-inline font-weight-lighter mr-2">
+                                                            <%= data==0?`OnSite`:`OnServiceStation`%>
+                                                        </span>
+                                                        <% }); %>
+                                                            <%}else{%>
+                                                                <span
+                                                                    class="label label-danger label-inline font-weight-lighter mr-2">"There
+                                                                    is No Service Type" </span>
+                                                                <%}%>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <label class="font-weight-bold">Delivery Option</label>
+
+                                            <div class="d-block px-2 py-2">
+                                                <%if(userData.deliveryOption.length> 0 &&
+                                                    userData.deliveryOption[0]!=""){%>
+                                                    <% userData.deliveryOption.forEach(function(data){%>
+                                                        <span
+                                                            class="label label-primary label-inline font-weight-lighter mr-2">
+                                                            <%= data==1?`Pick&Drop`:`SelfDrive`%>
+                                                        </span>
+                                                        <% }); %>
+                                                            <%}else{%>
+                                                                <span
+                                                                    class="label label-danger label-inline font-weight-lighter mr-2">"There
+                                                                    is No Delivery Option"</span>
+                                                                <%}%>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-4">
+                                            <label class="font-weight-bold">Id Number</label>
+                                            <%console.log("id number",userData.idNumber)%>
+                                                <input type="text" value="<%=userData.idNumber%>" class="form-control"
+                                                    placeholder="Id Number" disabled>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="font-weight-bold">Business Name</label>
+                                            <input type="text" value="<%=userData.businessName%>" class="form-control"
+                                                placeholder="businessName" disabled>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="font-weight-bold">Business Address</label>
+                                            <textarea class="form-control" placeholder="businessAddress" rows="4"
+                                                cols="7" disabled><%=userData.businessAddress%></textarea>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card card-custom gutter-b">
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <div class="col-md-4">
+                                            <label class="font-weight-bold">Profile</label>
+                                            <%if(userData.profile){%>
+                                                <img 
+                                                    src="https://velatedocuments.s3.eu-west-2.amazonaws.com/profile/<%=userData.profile%>"
+                                                    width="150px" height="80px" data-toggle="modal" data-target="#exampleModalCenter" >
+                                                
+                                                    <div class="modal fade" id="exampleModalCenter" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                                            <div class="modal-content">
+                                                                <button type="button" class="close close-modal btn-primary btn btn-sm" data-dismiss="modal" aria-label="Close">
+                                                                    <i aria-hidden="true" class="ki ki-close"></i>
+                                                                </button>
+                                                                <img src="https://velatedocuments.s3.eu-west-2.amazonaws.com/profile/<%=userData.profile%>">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                  
+                                                <%}else{%>
+                                                    <img src="images/default-img.jpg" width="150px">
+                                                    <%}%>
+
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="font-weight-bold">Document</label>
+                                            <img 
+                                                src="https://velatedocuments.s3.eu-west-2.amazonaws.com/document/<%=userData.document%>"
+                                                width="150px" height="80px" data-toggle="modal" data-target="#exampleModalCenter1">
+                                                 
+                                                <div class="modal fade" id="exampleModalCenter1" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                                        <div class="modal-content">
+                                                            <button type="button" class="close close-modal btn-primary btn btn-sm" data-dismiss="modal" aria-label="Close">
+                                                                <i aria-hidden="true" class="ki ki-close"></i>
+                                                            </button>
+                                                            <img src="https://velatedocuments.s3.eu-west-2.amazonaws.com/document/<%=userData.document%>">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                          
+                            <div class="card card-custom gutter-b">
+                                <div class="card-header">
+                                    <div class="card-title">
+                                        <h3 class="card-label">Working Hours</h3>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+
+                                    <div class="form-group row">
+                                        <div class="col-md-12">
+                                            <ul class="nav nav-success nav-pills" id="myTab" role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" id="home-tab-2" data-toggle="tab"
+                                                        href="#sunday-1">
+
+                                                        <span class="nav-text">Sunday</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="home-tab-2" data-toggle="tab"
+                                                        href="#monday-2">
+
+                                                        <span class="nav-text">Monday</span>
+                                                    </a>
+                                                </li>
+
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="home-tab-3" data-toggle="tab"
+                                                        href="#tuesday-3">
+
+                                                        <span class="nav-text">Tuesday</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="home-tab-2" data-toggle="tab"
+                                                        href="#wednesday-4">
+
+                                                        <span class="nav-text">Wednesday</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="home-tab-2" data-toggle="tab"
+                                                        href="#thursday-5">
+
+                                                        <span class="nav-text">Thursday</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="home-tab-2" data-toggle="tab"
+                                                        href="#friday-6">
+
+                                                        <span class="nav-text">Friday</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="home-tab-2" data-toggle="tab"
+                                                        href="#saturday-7">
+
+                                                        <span class="nav-text">Saturday</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="tab-content mt-5" id="myTabContent">
+
+                                            <div class="tab-pane fade active show" id="sunday-1" role="tabpanel"
+                                                aria-labelledby="home-tab-3">
+                                                <% var n=0%>
+                                                    <div style="width: 500px;">
+                                                        <table class="table table-head-custom table-vertical-center"
+                                                            id="kt_advance_table_widget_1">
+                                                            <thead>
+                                                                <tr class="text-center">
+                                                                    <th>Start Time</th>
+                                                                    <th>End Time</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <% userData.workingHours.forEach(function(days){%>
+                                                                <%if(days.day==1){%>
+                                                                    <%days.timeSlot.forEach(function(timeInterval){ %>
+
+                                                                        <tbody>
+                                                                            <tr class="text-center">
+                                                                                <td>
+                                                                                    <%= timeInterval.startTime%>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <%=timeInterval.endTime%>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                        <% n++; })%>
+                                                                            <% }%>
+                                                                                <% })%>
+                                                        </table>
+                                                    </div>
+                                                    <%if(n==0){%>
+                                                        <div class="text-center" style="width: 500px;">
+                                                            "There is no time to display!"
+                                                        </div>
+                                                        <%}%>
+                                            </div>
+
+                                            <div class="tab-pane fade text-center" id="monday-2" role="tabpanel"
+                                                aria-labelledby="home-tab-2">
+                                                <% n=0%>
+                                                    <div class="" style="width: 500px;">
+                                                        <table class="table table-head-custom table-vertical-center"
+                                                            id="kt_advance_table_widget_1">
+                                                            <thead>
+                                                                <tr class="text-center">
+                                                                    <th>Start Time</th>
+                                                                    <th>End Time</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <% userData.workingHours.forEach(function(days){%>
+                                                                <%if(days.day==2){%>
+                                                                    <%days.timeSlot.forEach(function(timeInterval){ %>
+
+                                                                        <tbody>
+                                                                            <tr class="text-center">
+                                                                                <td>
+                                                                                    <%= timeInterval.startTime%>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <%=timeInterval.endTime%>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                        <% n++; })%>
+                                                                            <% }%>
+                                                                                <% })%>
+                                                        </table>
+                                                    </div>
+                                                    <%if(n==0){%>
+                                                        <div class="text-center" style="width: 500px;">
+                                                            "There is no time to display!"
+                                                        </div>
+                                                        <%}%>
+                                            </div>
+
+                                            <div class="tab-pane fade" id="tuesday-3" role="tabpanel"
+                                                aria-labelledby="home-tab-2">
+                                                <% n=0%>
+                                                    <div class="" style="width: 500px;">
+                                                        <table class="table table-head-custom table-vertical-center"
+                                                            id="kt_advance_table_widget_1">
+                                                            <thead>
+                                                                <tr class="text-center">
+                                                                    <th>Start Time</th>
+                                                                    <th>End Time</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <% userData.workingHours.forEach(function(days){%>
+                                                                <%if(days.day==3){%>
+                                                                    <%days.timeSlot.forEach(function(timeInterval){ %>
+                                                                        <tbody>
+                                                                            <tr class="text-center">
+                                                                                <td>
+                                                                                    <%= timeInterval.startTime%>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <%=timeInterval.endTime%>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                        <% n++; })%>
+                                                                            <% }%>
+                                                                                <% })%>
+                                                        </table>
+                                                    </div>
+                                                    <%if(n==0){%>
+                                                        <div class="text-center" style="width: 500px;">
+                                                            "There is no time to display!"
+                                                        </div>
+                                                        <%}%>
+                                            </div>
+                                            <div class="tab-pane fade" id="wednesday-4" role="tabpanel"
+                                                aria-labelledby="home-tab-2">
+                                                <% n=0%>
+                                                    <div class="" style="width: 500px;">
+                                                        <table class="table table-head-custom table-vertical-center"
+                                                            id="kt_advance_table_widget_1">
+                                                            <thead>
+                                                                <tr class="text-center">
+                                                                    <th>Start Time</th>
+                                                                    <th>End Time</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <% userData.workingHours.forEach(function(days){%>
+                                                                <%if(days.day==4){%>
+                                                                    <%days.timeSlot.forEach(function(timeInterval){ %>
+
+                                                                        <tbody>
+                                                                            <tr class="text-center">
+                                                                                <td>
+                                                                                    <%= timeInterval.startTime%>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <%=timeInterval.endTime%>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                        <% n++; })%>
+                                                                            <% }%>
+                                                                                <% })%>
+                                                        </table>
+                                                    </div>
+
+                                                    <%if(n==0){%>
+                                                        <div class="text-center" style="width: 500px;">
+                                                            "There is no time to display!"
+                                                        </div>
+                                                        <%}%>
+                                            </div>
+                                            <div class="tab-pane fade" id="thursday-5" role="tabpanel"
+                                                aria-labelledby="home-tab-2">
+                                                <% n=0%>
+                                                    <div class="" style="width: 500px;">
+                                                        <table class="table table-head-custom table-vertical-center"
+                                                            id="kt_advance_table_widget_1">
+                                                            <thead>
+                                                                <tr class="text-center">
+                                                                    <th>Start Time</th>
+                                                                    <th>End Time</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <% userData.workingHours.forEach(function(days){%>
+                                                                <%if(days.day==5){%>
+                                                                    <%days.timeSlot.forEach(function(timeInterval){ %>
+
+                                                                        <tbody>
+                                                                            <tr class="text-center">
+                                                                                <td>
+                                                                                    <%= timeInterval.startTime%>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <%=timeInterval.endTime%>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                        <%n++;})%>
+                                                                            <% }%>
+                                                                                <% })%>
+                                                        </table>
+                                                    </div>
+                                                    <%if(n==0){%>
+                                                        <div class="text-center" style="width: 500px;">
+                                                            "There is no time to display!"
+                                                        </div>
+                                                        <%}%>
+                                            </div>
+                                            <div class="tab-pane fade" id="friday-6" role="tabpanel"
+                                                aria-labelledby="home-tab-2">
+                                                <% n=0%>
+                                                    <div class="" style="width: 500px;">
+                                                        <table class="table table-head-custom table-vertical-center"
+                                                            id="kt_advance_table_widget_1">
+                                                            <thead>
+                                                                <tr class="text-center" class="text-center">
+                                                                    <th>Start Time</th>
+                                                                    <th>End Time</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <% userData.workingHours.forEach(function(days){%>
+                                                                <%if(days.day==6){%>
+                                                                    <%days.timeSlot.forEach(function(timeInterval){ %>
+
+                                                                        <tbody>
+                                                                            <tr class="text-center">
+                                                                                <td>
+                                                                                    <%= timeInterval.startTime%>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <%=timeInterval.endTime%>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                        <% n++; })%>
+                                                                            <% }%>
+                                                                                <% })%>
+                                                        </table>
+                                                    </div>
+                                                    <%if(n==0){%>
+                                                        <div class="text-center" style="width: 500px;">
+                                                            "There is no time to display!"
+                                                        </div>
+                                                        <%}%>
+                                            </div>
+                                            <div class="tab-pane fade" id="saturday-7" role="tabpanel"
+                                                aria-labelledby="home-tab-2">
+                                                <% n=0%>
+                                                    <div class="" style="width: 500px;">
+                                                        <table class="table table-head-custom table-vertical-center"
+                                                            id="kt_advance_table_widget_1">
+                                                            <thead>
+                                                                <tr class="text-center" class="text-center">
+                                                                    <th>Start Time</th>
+                                                                    <th>End Time</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <% userData.workingHours.forEach(function(days){%>
+                                                                <%if(days.day==7){%>
+                                                                    <%days.timeSlot.forEach(function(timeInterval){ %>
+
+                                                                        <tbody>
+                                                                            <tr class="text-center">
+                                                                                <td>
+                                                                                    <%= timeInterval.startTime%>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <%=timeInterval.endTime%>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                        <% n++; })%>
+                                                                            <% }%>
+                                                                                <% })%>
+                                                        </table>
+                                                    </div>
+                                                    <%if(n==0){%>
+                                                        <div class="text-center" style="width: 500px;">
+                                                            "There is no time to display!"
+                                                        </div>
+                                                        <%}%>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="card card-custom gutter-b">
+                                <div class="card-header">
+                                    <div class="card-title">
+                                        <h3 class="card-label">Services</h3>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <div class="col-md-10">
+                                            <ul class="nav nav-success nav-pills" id="myTab" role="tablist">
+                                                <% var setDefault=0%>
+                                                    <%var defaultService=0 %>
+                                                        <% cars.forEach(function(car){%>
+                                                            <li class="nav-item">
+                                                                <% if (setDefault==0){%>
+                                                                    <a class="nav-link active" id="<%=car.name%>"
+                                                                        data-toggle="tab" href="#hello<%=car._id%>">
+
+                                                                        <span class="nav-text">
+                                                                            <%=car.name%>
+                                                                        </span>
+                                                                        <% defaultService=car._id %>
+                                                                            <% console.log("defaultcar id "+ defaultService)%>
+                                                                    </a>
+                                                                    <% }else{ %>
+                                                                        <a class=" nav-link" id="<%=car.name%>"
+                                                                                data-toggle="tab"
+                                                                                href="#hello<%=car._id%>">
+
+                                                                                <span class="nav-text">
+                                                                                    <%=car.name%>
+                                                                                </span>
+                                                                    </a>
+                                                                    <%}%>
+                                                                        <% setDefault++; %>
+                                                            </li>
+
+                                                            <%})%>
+                                            </ul>
+
+                                        </div>
+                                        <div class="tab-content mt-5 text-center" id="myTabContent">
+                                            <% cars.forEach(function(car){%>
+                                                <% if( car._id.toString()==defaultService.toString()){ %>
+                                                    <div class="tab-pane fade active show" id="hello<%=car._id%>"
+                                                        role="tabpanel" aria-labelledby="<%=car.name%>">
+                                                        <%n=0%>
+                                                            <% userData.services.forEach(function(carServices){%>
+
+                                                                <%if(defaultService.toString()==carServices.carId.toString()){%>
+                                                                    <div class="" style="width: 500px;">
+                                                                        <table
+                                                                            class="table table-head-custom table-vertical-center"
+                                                                            id="kt_advance_table_widget_1">
+                                                                            <thead>
+                                                                                <tr class="text-left">
+                                                                                    <th>Name Of Service</th>
+                                                                                    <th>Price Of Service</th>
+                                                                                    <th>Duration Of Service</th>
+                                                                                    <th>Features</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <%
+                                                                                carServices.aboutService.forEach(function(service){%>
+                                                                                <tbody>
+                                                                                    <tr class="text-left">
+                                                                                        <td>
+                                                                                            <%=
+                                                                                                service.nameOfTheService%>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <%=service.priceOfService%>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <%=service.durationOfTheService%>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <ul>
+                                                                                                <%service.features.forEach(function(feature){%>
+
+                                                                                                    <li>
+                                                                                                        <%=feature%>
+                                                                                                    </li>
+                                                                                                    <%})%>
+                                                                                            </ul>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                                <%n++;})%>
+                                                                        </table>
+                                                                    </div>
+                                                                    <%}%>
+
+                                                                        <%})%>
+                                                                            <% }else{%>
+                                                                                <div class="tab-pane fade "
+                                                                                    id="hello<%=car._id%>"
+                                                                                    role="tabpanel"
+                                                                                    aria-labelledby="<%=car.name%>">
+                                                                                    <%n=0%>
+                                                                                        <%
+                                                                                            userData.services.forEach(function(carServices){%>
+
+                                                                                            <%if(car._id.toString()==carServices.carId.toString()){%>
+                                                                                                <div class=""
+                                                                                                    style="width: 500px;">
+                                                                                                    <table
+                                                                                                        class="table table-head-custom table-vertical-center"
+                                                                                                        id="kt_advance_table_widget_1">
+                                                                                                        <thead>
+                                                                                                            <tr
+                                                                                                                class="text-left">
+                                                                                                                <th>Name
+                                                                                                                    Of
+                                                                                                                    Service
+                                                                                                                </th>
+                                                                                                                <th>Price
+                                                                                                                    Of
+                                                                                                                    Service
+                                                                                                                </th>
+                                                                                                                <th>Duration
+                                                                                                                    Of
+                                                                                                                    Service
+                                                                                                                </th>
+                                                                                                                <th>Features
+                                                                                                                </th>
+                                                                                                            </tr>
+                                                                                                        </thead>
+                                                                                                        <%
+                                                                                                            carServices.aboutService.forEach(function(service){%>
+                                                                                                            <tbody>
+                                                                                                                <tr
+                                                                                                                    class="text-left">
+                                                                                                                    <td>
+                                                                                                                        <%=
+                                                                                                                            service.nameOfTheService%>
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        <%=service.priceOfService%>
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        <%=service.durationOfTheService%>
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        <ul>
+                                                                                                                            <%service.features.forEach(function(feature){%>
+
+                                                                                                                                <li>
+                                                                                                                                    <%=feature%>
+                                                                                                                                </li>
+                                                                                                                                <%})%>
+                                                                                                                        </ul>
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                            </tbody>
+                                                                                                            <%n++;})%>
+                                                                                                    </table>
+                                                                                                </div>
+                                                                                                <%}%>
+
+                                                                                                    <%})%>
+                                                                                                        <%}%>
+
+
+                                                                                                            <%if(n==0){%>
+                                                                                                                <div
+                                                                                                                    style="width: 500px;">
+                                                                                                                    There
+                                                                                                                    is
+                                                                                                                    no
+                                                                                                                    services
+                                                                                                                    to
+                                                                                                                    display
+                                                                                                                    in
+                                                                                                                    this
+                                                                                                                    Car
+                                                                                                                    Type.
+                                                                                                                </div>
+                                                                                                                <%}%>
+                                                                                </div>
+
+                                                                                <%})%>
+
+                                                    </div>
+
+                                        </div>
+                                       
+                                    </div>
+                                
+                                
+                                  
+                                
+                                
+                                
+                                
+                                </div>
+
+                                <div class="card card-custom gutter-b">
+                                    <div class="card-body">
+                
+                
+                                        <label class="font-weight-bold">Account Verification</label>
+                
+                                        <%if (userData.isVerified==0){%>
+                                            <a id="verified" class="btn btn-light-danger font-weight-bolder" 
+                                                data-href="/provider/approvalAction/1/<%=userData._id%>">
+                                                <span class="svg-icon svg-icon-danger svg-icon-2x" style :
+                                                    color="red">
+                                                    <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-04-19-122603/theme/html/demo3/dist/../src/media/svg/icons/Navigation/Close.svg--><svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                                                        height="24px" viewBox="0 0 24 24" version="1.1">
+                                                        <g stroke="none" stroke-width="1" fill="none"
+                                                            fill-rule="evenodd">
+                                                            <g transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000) translate(4.000000, 4.000000)"
+                                                                fill="#000000">
+                                                                <rect x="0" y="7" width="16" height="2"
+                                                                    rx="1" />
+                                                                <rect opacity="0.3"
+                                                                    transform="translate(8.000000, 8.000000) rotate(-270.000000) translate(-8.000000, -8.000000) "
+                                                                    x="0" y="7" width="16" height="2" rx="1" />
+                                                            </g>
+                                                        </g>
+                                                    </svg>
+                                                    <!--end::Svg Icon-->
+                                                </span>Rejected
+                
+                                            </a>
+                
+                                            <%}else if(userData.isVerified==1){%>
+                
+                                                <a id="notVerified" class="btn btn-light-primary  font-weight-bold"
+                                                    data-href="/provider/approvalAction/0/<%=userData._id%>">
+                                                    <span class="svg-icon svg-icon-md">
+                                                        <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-04-19-122603/theme/html/demo3/dist/../src/media/svg/icons/Navigation/Check.svg--><svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                            width="24px" height="24px" viewBox="0 0 24 24"
+                                                            version="1.1">
+                                                            <g stroke="none" stroke-width="1" fill="none"
+                                                                fill-rule="evenodd">
+                                                                <polygon points="0 0 24 0 24 24 0 24" />
+                                                                <path
+                                                                    d="M6.26193932,17.6476484 C5.90425297,18.0684559 5.27315905,18.1196257 4.85235158,17.7619393 C4.43154411,17.404253 4.38037434,16.773159 4.73806068,16.3523516 L13.2380607,6.35235158 C13.6013618,5.92493855 14.2451015,5.87991302 14.6643638,6.25259068 L19.1643638,10.2525907 C19.5771466,10.6195087 19.6143273,11.2515811 19.2474093,11.6643638 C18.8804913,12.0771466 18.2484189,12.1143273 17.8356362,11.7474093 L14.0997854,8.42665306 L6.26193932,17.6476484 Z"
+                                                                    fill="#000000" fill-rule="nonzero"
+                                                                    transform="translate(11.999995, 12.000002) rotate(-180.000000) translate(-11.999995, -12.000002) " />
+                                                            </g>
+                                                        </svg>
+                                                        <!--end::Svg Icon-->
+                                                    </span>Verified
+                
+                                                </a>
+                                                <%}else{%>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <a id="verified" class="btn btn-light-warning font-weight-bolder"
+                                                                data-href="/provider/approvalAction/1/<%=userData._id%>">
+                                                                <span
+                                                                    class="svg-icon svg-icon-md">
+                                                                    <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-04-19-122603/theme/html/demo3/dist/../src/media/svg/icons/Navigation/Check.svg--><svg
+                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                        width="24px" height="24px"
+                                                                        viewBox="0 0 24 24" version="1.1">
+                                                                        <g stroke="none" stroke-width="1"
+                                                                            fill="none" fill-rule="evenodd">
+                                                                            <polygon
+                                                                                points="0 0 24 0 24 24 0 24" />
+                                                                            <path
+                                                                                d="M6.26193932,17.6476484 C5.90425297,18.0684559 5.27315905,18.1196257 4.85235158,17.7619393 C4.43154411,17.404253 4.38037434,16.773159 4.73806068,16.3523516 L13.2380607,6.35235158 C13.6013618,5.92493855 14.2451015,5.87991302 14.6643638,6.25259068 L19.1643638,10.2525907 C19.5771466,10.6195087 19.6143273,11.2515811 19.2474093,11.6643638 C18.8804913,12.0771466 18.2484189,12.1143273 17.8356362,11.7474093 L14.0997854,8.42665306 L6.26193932,17.6476484 Z"
+                                                                                fill="#000000"
+                                                                                fill-rule="nonzero"
+                                                                                transform="translate(11.999995, 12.000002) rotate(-180.000000) translate(-11.999995, -12.000002) " />
+                                                                        </g>
+                                                                    </svg>
+                                                                    <!--end::Svg Icon-->
+                                                                </span>Verify
+                                                            </a>
+                                                        
+                                                            <a id="notVerified" class="btn btn-light-danger font-weight-bolder"
+                                                                data-href="/provider/approvalAction/0/<%=userData._id%>">
+                                                                <span
+                                                                    class="svg-icon svg-icon-md ">
+                                                                    <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-04-19-122603/theme/html/demo3/dist/../src/media/svg/icons/Navigation/Close.svg--><svg
+                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                        width="24px" height="24px"
+                                                                        viewBox="0 0 24 24" version="1.1">
+                                                                        <g stroke="none" stroke-width="1"
+                                                                            fill="none" fill-rule="evenodd">
+                                                                            <g transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000) translate(4.000000, 4.000000)"
+                                                                                fill="#000000">
+                                                                                <rect x="0" y="7" width="16"
+                                                                                    height="2" rx="1" />
+                                                                                <rect opacity="0.3"
+                                                                                    transform="translate(8.000000, 8.000000) rotate(-270.000000) translate(-8.000000, -8.000000) "
+                                                                                    x="0" y="7" width="16"
+                                                                                    height="2" rx="1" />
+                                                                            </g>
+                                                                        </g>
+                                                                    </svg>
+                                                                    <!--end::Svg Icon-->
+                                                                </span>Reject
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <%}%>
+                                    </div>
+                
+                                </div>
+                              
+                                </div>
+                      
+                        </div>
+                    </div>
+                    <!--end::Container-->
+                </div>
+                   
+
+
+
+
+              
+                <!--end::Entry-->
+            </div>
+            <!--end::Content-->
+            <!--begin::Footer-->
+            <!--doc: add "bg-white" class to have footer with solod background color-->
+
+            <div class="footer py-4 d-flex flex-lg-column" id="kt_footer">
+                <!--begin::Container-->
+                <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between">
+                    <!--begin::Copyright-->
+                    <div class="text-dark order-2 order-md-1">
+                        <span class="text-muted font-weight-bold mr-2">2021©</span>
+                        <a href="#" target="_blank" class="text-dark-75 text-hover-primary">Admin Panel</a>
+                    </div>
+                    <!--end::Copyright-->
+                </div>
+                <!--end::Container-->
+            </div>
+            <!--end::Footer-->
+        </div>
+        <!--end::Wrapper-->
+    </div>
+    <!--end::Page-->
+    </div>
+    <!--end::Main-->
+
+
+
+    <!--begin::Scrolltop-->
+    <div id="kt_scrolltop" class="scrolltop">
+        <span class="svg-icon">
+            <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Up-2.svg-->
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                height="24px" viewBox="0 0 24 24" version="1.1">
+                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <polygon points="0 0 24 0 24 24 0 24" />
+                    <rect fill="#000000" opacity="0.3" x="11" y="10" width="2" height="10" rx="1" />
+                    <path
+                        d="M6.70710678,12.7071068 C6.31658249,13.0976311 5.68341751,13.0976311 5.29289322,12.7071068 C4.90236893,12.3165825 4.90236893,11.6834175 5.29289322,11.2928932 L11.2928932,5.29289322 C11.6714722,4.91431428 12.2810586,4.90106866 12.6757246,5.26284586 L18.6757246,10.7628459 C19.0828436,11.1360383 19.1103465,11.7686056 18.7371541,12.1757246 C18.3639617,12.5828436 17.7313944,12.6103465 17.3242754,12.2371541 L12.0300757,7.38413782 L6.70710678,12.7071068 Z"
+                        fill="#000000" fill-rule="nonzero" />
+                </g>
+            </svg>
+            <!--end::Svg Icon-->
+        </span>
+    </div>
+    <!--end::Scrolltop-->
+
+    <script>
+        var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";
+    </script>
+    <!--begin::Global Config(global config for global JS scripts)-->
+    <script>
+        var KTAppSettings = {
+            "breakpoints": {
+                "sm": 576,
+                "md": 768,
+                "lg": 992,
+                "xl": 1200,
+                "xxl": 1200
+            },
+            "colors": {
+                "theme": {
+                    "base": {
+                        "white": "#ffffff",
+                        "primary": "#1BC5BD",
+                        "secondary": "#E5EAEE",
+                        "success": "#1BC5BD",
+                        "info": "#6993FF",
+                        "warning": "#FFA800",
+                        "danger": "#F64E60",
+                        "light": "#F3F6F9",
+                        "dark": "#212121"
+                    },
+                    "light": {
+                        "white": "#ffffff",
+                        "primary": "#1BC5BD",
+                        "secondary": "#ECF0F3",
+                        "success": "#C9F7F5",
+                        "info": "#E1E9FF",
+                        "warning": "#FFF4DE",
+                        "danger": "#FFE2E5",
+                        "light": "#F3F6F9",
+                        "dark": "#D6D6E0"
+                    },
+                    "inverse": {
+                        "white": "#ffffff",
+                        "primary": "#ffffff",
+                        "secondary": "#212121",
+                        "success": "#ffffff",
+                        "info": "#ffffff",
+                        "warning": "#ffffff",
+                        "danger": "#ffffff",
+                        "light": "#464E5F",
+                        "dark": "#ffffff"
+                    }
+                },
+                "gray": {
+                    "gray-100": "#F3F6F9",
+                    "gray-200": "#ECF0F3",
+                    "gray-300": "#E5EAEE",
+                    "gray-400": "#D6D6E0",
+                    "gray-500": "#B5B5C3",
+                    "gray-600": "#80808F",
+                    "gray-700": "#464E5F",
+                    "gray-800": "#1B283F",
+                    "gray-900": "#212121"
+                }
+            },
+            "font-family": "Poppins"
+        };
+    </script>
+    <!--end::Global Config-->
+    <!--begin::Global Theme Bundle(used by all pages)-->
+    <script src="assets/plugins/global/plugins.bundle.js"></script>
+    <script src="assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
+    <script src="assets/js/scripts.bundle.js"></script>
+    <!--end::Global Theme Bundle-->
+    <!--begin::Page Scripts(used by this page)-->
+    <script src="assets/js/pages/widgets.js"></script>
+    <script src="/metronic/theme/html/demo3/dist/assets/js/pages/crud/forms/widgets/select2.js?v=7.2.3"></script>
+
+   
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        jQuery(document).on('click', '#notVerified', function () {
+            var url = jQuery(this).data('href');
+            swal({
+                title: 'Are you sure?',
+                icon: 'warning',
+                text: "You want to Reject this Account? ",
+                buttons: { yes: { text: 'Yes', value: 'yes' }, no: { text: 'No', value: 'no' } }
+            }).then(function (value) {
+                if (value == 'yes') {
+                    window.location = url;
+                    swal("Successfully Rejected!", {
+                        icon: "success",
+                    });
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        jQuery(document).on('click', '#verified', function () {
+            var url = jQuery(this).data('href');
+            swal({
+                title: "Are you sure?",
+                icon: 'warning',
+                text: 'Are you sure you want to Verify this Account? ',
+                buttons: { yes: { text: 'Yes', value: 'yes' }, no: { text: 'No', value: 'no' } }
+            }).then(function (value) {
+                if (value == 'yes') {
+                    window.location = url;
+                    swal("Account Verified Successfully!", {
+                        icon: "success",
+                    });
+                }
+            });
+        });
+    </script>
+    
+  
+  
+    <!--end::Page Scripts-->
+   
+
+    </body>
+    <!--end::Body-->
+
+    </html>

@@ -1,0 +1,497 @@
+<%- include ('header.ejs') %>
+            <!--begin::Wrapper-->
+            <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+                <!--begin::Content-->
+                <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+                    <!--begin::Subheader-->
+                    <div class="subheader py-3 py-lg-8 subheader-transparent" id="kt_subheader">
+                        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+                            <!--begin::Info-->
+                            <div class="d-flex align-items-center mr-1">
+                                <!--begin::Page Heading-->
+                                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                                    <!--begin::Page Title-->
+                                    <h2 class="d-flex align-items-center text-dark font-weight-bold my-1 mr-3">Manage Selling Item</h2>
+                                    <!--end::Page Title-->
+                       <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"> -->
+                                </div>
+                                <!--end::Page Heading-->
+                            </div>
+                             <div><%=msg%></div>
+                            <!--end::Info-->
+                            <!--begin::Toolbar-->
+                            <div class="d-flex align-items-center flex-wrap">
+                                <!--begin::Button-->
+                                <a href="/item/getAddSellingItem" class="btn btn-primary btn-fixed-height font-weight-bold px-2 px-lg-5 mr-2">
+                                    <i class="ki ki-plus icon-nm"></i>Add Selling Item
+                                </a>
+                                <!--end::Button-->
+
+                                <link rel="stylesheet" href="assets/css/item-description-style.css" type="text/css">
+                            </div>
+                            <!--end::Toolbar-->
+                        </div>
+                    </div>
+                   <!--end::Subheader-->
+						<!--begin::Entry-->
+						<div class="d-flex flex-column-fluid">
+							<!--begin::Container-->
+							<div class="container-fluid">
+								<div class="card card-custom gutter-b">
+									
+									<!--begin::Body-->
+									<div class="card-body py-0">
+                                    <!--begin::Table-->
+
+                                    <div class="my-4 offset-md-4">
+                                       
+                                            <div class="row justify-content-end">
+                                                <div class="col-md-4">
+                                                    <div class="input-icon">
+                                                       <input type="text" class="form-control" placeholder="Search..." id="searchbox" />
+                                                           <span>
+                                                               <i class="flaticon2-search-1 text-muted"></i>
+                                                           </span>
+                                                     </div>
+                                                      </div>                                                
+												<div class="col-md-3 my-2 px-2 my-md-0">
+                                                    <form id="filter_form" class="form-filter" method="post">
+													<div class="d-flex align-items-center">
+														<select class="form-control" name="filter" id="">
+                                                            <option value="">Filter By </option>                                                     
+                                                            <option value="1" >Enable Items</option>    
+                                                            <option value="0" >Disable Items</option>    
+														</select>
+													</div>
+												</div>
+                                                <div class="col-md-2 my-2 px-2 my-md-0">
+                                                        <div class="d-flex align-items-center">
+                                                            <button type="submit" class="btn btn-primary btn-fixed-height font-weight-bold px-2 px-lg-5 mr-2">Apply</button>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                          
+                                            </div>
+										</form>
+                                          <!--end::Table-->
+                                         </div>
+									<!--end::Body-->
+								</div>
+								<!--begin::Advance Table Widget 1-->
+                            <div class="card card-custom gutter-b">
+
+                                <!--begin::Body-->
+                              
+                                <div class="card-body py-3 px-3">
+                                    <div class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <!--begin::Table-->
+                                                <div class="table-responsive">
+                                                    <table id="mytable" class="table-vertical-center table table-separate table-head-custom table-checkable dataTable " id="kt_advance_table_widget_1">
+                                                        <thead>
+                                                            <tr class="text-left">
+                                                                <th>Sr. NO.</th>
+                                                                <th>Item Name</th>           
+                                                                <th>Item Image</th>                                                                          <th>Unit Price</th>                                                                                                   
+                                                                <th>Discount Price</th>
+                                                                <th>Description</th>
+                                                                <th>Created On</th>
+                                                               
+                                                                <th>Status</th>
+                                                                <th>Action</th>                                                                                                               
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <!--end::Table-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+
+                                <!--end::Body-->
+                            </div>
+                            <!--end::Advance Table Widget 1-->
+                        </div>
+                        <!--end::Container-->
+                    </div>
+                    <!--end::Entry-->
+                </div>
+                <!--end::Content-->
+                <!--begin::Footer-->
+                <!--doc: add "bg-white" class to have footer with solod background color-->
+                <div class="footer py-4 d-flex flex-lg-column" id="kt_footer">
+                    <!--begin::Container-->
+                    <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between">
+                        <!--begin::Copyright-->
+                        <div class="text-dark order-2 order-md-1">
+                            <span class="text-muted font-weight-bold mr-2">2021©</span>
+                            <a href="#" target="_blank" class="text-dark-75 text-hover-primary">Admin Panel</a>
+                        </div>
+                        <!--end::Copyright-->
+                    </div>
+                    <!--end::Container-->
+                </div>
+                <!--end::Footer-->
+            </div>
+            <!--end::Wrapper-->
+        </div>
+        <!--end::Page-->
+    </div>
+    <!--end::Main-->
+
+
+    <!--begin::Scrolltop-->
+    <div id="kt_scrolltop" class="scrolltop">
+        <span class="svg-icon">
+				<!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Up-2.svg-->
+				<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+					<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+						<polygon points="0 0 24 0 24 24 0 24" />
+						<rect fill="#000000" opacity="0.3" x="11" y="10" width="2" height="10" rx="1" />
+						<path d="M6.70710678,12.7071068 C6.31658249,13.0976311 5.68341751,13.0976311 5.29289322,12.7071068 C4.90236893,12.3165825 4.90236893,11.6834175 5.29289322,11.2928932 L11.2928932,5.29289322 C11.6714722,4.91431428 12.2810586,4.90106866 12.6757246,5.26284586 L18.6757246,10.7628459 C19.0828436,11.1360383 19.1103465,11.7686056 18.7371541,12.1757246 C18.3639617,12.5828436 17.7313944,12.6103465 17.3242754,12.2371541 L12.0300757,7.38413782 L6.70710678,12.7071068 Z" fill="#000000" fill-rule="nonzero" />
+					</g>
+				</svg>
+				<!--end::Svg Icon-->
+			</span>
+    </div>
+    <!--end::Scrolltop-->
+
+    <script>
+        var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";
+    </script>
+    <!--begin::Global Config(global config for global JS scripts)-->
+    <script>
+        var KTAppSettings = {
+            "breakpoints": {
+                "sm": 576,
+                "md": 768,
+                "lg": 992,
+                "xl": 1200,
+                "xxl": 1200
+            },
+            "colors": {
+                "theme": {
+                    "base": {
+                        "white": "#ffffff",
+                        "primary": "#1BC5BD",
+                        "secondary": "#E5EAEE",
+                        "success": "#1BC5BD",
+                        "info": "#6993FF",
+                        "warning": "#FFA800",
+                        "danger": "#F64E60",
+                        "light": "#F3F6F9",
+                        "dark": "#212121"
+                    },
+                    "light": {
+                        "white": "#ffffff",
+                        "primary": "#1BC5BD",
+                        "secondary": "#ECF0F3",
+                        "success": "#C9F7F5",
+                        "info": "#E1E9FF",
+                        "warning": "#FFF4DE",
+                        "danger": "#FFE2E5",
+                        "light": "#F3F6F9",
+                        "dark": "#D6D6E0"
+                    },
+                    "inverse": {
+                        "white": "#ffffff",
+                        "primary": "#ffffff",
+                        "secondary": "#212121",
+                        "success": "#ffffff",
+                        "info": "#ffffff",
+                        "warning": "#ffffff",
+                        "danger": "#ffffff",
+                        "light": "#464E5F",
+                        "dark": "#ffffff"
+                    }
+                },
+                "gray": {
+                    "gray-100": "#F3F6F9",
+                    "gray-200": "#ECF0F3",
+                    "gray-300": "#E5EAEE",
+                    "gray-400": "#D6D6E0",
+                    "gray-500": "#B5B5C3",
+                    "gray-600": "#80808F",
+                    "gray-700": "#464E5F",
+                    "gray-800": "#1B283F",
+                    "gray-900": "#212121"
+                }
+            },
+            "font-family": "Poppins"
+        };
+    </script>
+    <!--end::Global Config-->
+    <!--begin::Global Theme Bundle(used by all pages)-->
+    <script src="assets/plugins/global/plugins.bundle.js"></script>
+    <script src="assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
+    <script src="assets/js/scripts.bundle.js"></script>
+    <!--end::Global Theme Bundle-->
+    <!--begin::Page Scripts(used by this page)-->
+    <script src="assets/js/pages/widgets.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        jQuery(document).on('click', '#deletedGlobal', function () {
+        var url = jQuery(this).data('href');
+        swal({
+            title: 'Delete',
+            icon: 'error',
+            text: 'Are you sure want to delete ? ',
+            buttons: { yes: { text: 'Yes', value: 'yes' }, no: { text: 'No', value: 'no' } }
+        }).then(function (value) {
+            if (value == 'yes') {
+                window.location = url;
+            }
+        });
+    });
+    </script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <!-- <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap4.min.js"></script> -->
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.24/datatables.min.js"></script>
+      
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var t = $('#mytable').DataTable({
+                "paging": true,
+                "pageLength": 10,
+                "processing": true,
+                "serverSide": true,
+                "order": [[ 3, "asc" ]],
+                "order": [[ 6, "desc" ]],
+                'ajax': {
+                    'type': 'POST',
+                    'url': '/item/paginate-orders',						
+                },
+                'columns':
+                    [
+                   
+                     {data:null},		
+					{ 'data': 'itemName','name': 'Item Name',
+						"render": function(data, type, row, meta){
+							if(data){
+							var html = '<a href="/item/getUpdateSellingItem/'+row._id+'">'+ data + '</a>';
+							}
+							return html;
+						}					  
+					},
+                    { 'data': 'itemImages','name': 'Item Image' ,
+                         "render":function(data, type, row, meta){
+                            console.log("image is here :",data[0])
+  return '<img src="https://velatedocuments.s3.eu-west-2.amazonaws.com/itemImages/'+data[0]+'" width="150px" height="80px" />';
+                         }          
+                },                
+                    { 'data': 'unitPrice', "defaultContent": "", 'name': 'Unit Price' },
+                    { 'data': 'discountPrice',"defaultContent": "",  'name': 'Discount Price' },
+                    { 'data': 'description', 'name': 'Description',                
+                    render: function(data){
+                    if(data){
+                      return (data.length > 50)?data.substring(0, 80)+'...':data;
+                        } else {
+                         return data;
+                      }
+                     },                    
+                     },
+                  
+                    { 'data': 'createdAt',  "defaultContent": "",'name': 'Created On',
+                    render: function (data, type, row, meta) {
+					         return moment(data).format('DD/MM/YYYY HH:MM:SS');
+					     	 }
+
+                    },		                  	
+                    
+                    { 'data': 'status', 'name': 'Status',
+						"render": function(data, type, row, meta){
+                           
+									var html = '<a href="/item/setStatus/'+data+'/'+row._id+'">';
+								  if(data == 1){
+                                  html +=  
+								  '<span class="svg-icon svg-icon-primary svg-icon-2x">'+                                                               
+                                    '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">'+
+                                    '<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">'+
+                                        '<rect x="0" y="0" width="24" height="24"/>'+
+                                        '<rect fill="#000000" opacity="0.3" x="2" y="6" width="21" height="12" rx="6"/>'+
+                                        '<circle fill="#000000" cx="17" cy="12" r="4"/>'
+                                    '</g>';
+																
+									
+								  }else if(data == 0 ){
+									html += 
+									'<span class="svg-icon svg-icon-danger svg-icon-2x">'+                                  
+                                        '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">'+
+                                        '<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">'+
+                                            '<rect x="0" y="0" width="24" height="24"/>'+
+                                            '<rect fill="#000000" opacity="0.3" x="2" y="6" width="21" height="12" rx="6"/>'+
+                                            '<circle fill="#000000" cx="17" cy="12" r="4"/>'+
+                                        '</g>';																									
+								  }
+								 html += '</a>';
+                               return html;
+							}
+						  
+						 },	
+
+                    { 'data': '', 'name': 'Action',
+
+                       "render": function(data, type, row, meta){							
+							var html = '<a id="deletedGlobal" data-href="/item/deleteSellingItem/'+row._id+'" class="btn btn-icon btn-danger mb-1 btn-sm"> <i class="flaticon-delete"></i> </a>';							
+							return html;
+						}
+                    }
+                    ],
+                    
+                "columnDefs": [
+                    {
+                        "searchable": false,
+                        "orderable": false, "targets": [0, 1,2,4,5,7,8]
+                    }
+                ]
+            });
+            t.on('draw.dt', function () { 
+					var info = t.page.info(); 
+					t.column(0, {
+						 search: 'applied',
+						  order: 'applied', 
+						  page: 'applied' })
+					.nodes().each(function (cell, i)
+					 {
+						  cell.innerHTML = i + 1 + info.start; 
+						}); });
+
+
+            $(document).on('submit','#filter_form', function(e){
+                e.preventDefault();
+                
+                var form_data = [];
+                form_data['filter'] = $('select[name="filter"] :selected').val();
+
+                $('#mytable').dataTable().fnDestroy();
+                var t = $('#mytable').DataTable({
+                "paging": true,
+                "pageLength": 10,
+                "processing": true,
+                "serverSide": true,
+                "order": [[ 3, "asc" ]],
+                "order": [[ 6, "desc" ]],
+                
+                'ajax': {
+                    'type': 'POST',
+                    'url': '/item/paginate-orders',
+                    'data':	form_data				
+                },
+                'columns':
+                    [
+                   
+                     {data:null},		
+					{ 'data': 'itemName','name': 'Item Name',
+						"render": function(data, type, row, meta){
+							if(data){
+							var html = '<a href="/item/getUpdateSellingItem/'+row._id+'">'+ data + '</a>';
+							}
+							return html;
+						}
+					  
+					},
+                    { 'data': 'itemImages','name': 'Item Image' ,
+                         "render":function(data, type, row, meta){
+                             console.log("image is here :",data[0]);
+
+                        return '<img src="https://velatedocuments.s3.eu-west-2.amazonaws.com/itemImages/'+data[0]+'" width="150px" height="80px" />';
+                         }          
+                },                
+                    { 'data': 'unitPrice', "defaultContent": "", 'name': 'Unit Price' },
+                    { 'data': 'discountPrice',"defaultContent": "",  'name': 'Discount Price' },
+                    { 'data': 'description', 'name': 'Description',                
+                    render: function(data){
+                    if(data){
+                      return (data.length > 50)?data.substring(0, 50)+'...':data;
+                        } else {
+                         return data;
+                      }
+                     },                    
+                     },
+              
+                     { 'data': 'createdAt',  "defaultContent": "",'name': 'Created On',
+                    render: function (data, type, row, meta) {
+					         return moment(data).format('DD/MM/YYYY HH:MM:SS');
+					     	 }
+
+                    },			                  	
+                    
+                    { 'data': 'status', 'name': 'Status',
+						"render": function(data, type, row, meta){
+                           
+									var html = '<a href="/item/setStatus/'+data+'/'+row._id+'">';
+								  if(data == 1){
+                                  html +=  
+								  '<span class="svg-icon svg-icon-primary svg-icon-2x">'+                                                               
+                                    '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">'+
+                                    '<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">'+
+                                        '<rect x="0" y="0" width="24" height="24"/>'+
+                                        '<rect fill="#000000" opacity="0.3" x="2" y="6" width="21" height="12" rx="6"/>'+
+                                        '<circle fill="#000000" cx="17" cy="12" r="4"/>'
+                                    '</g>';
+																									
+								  }else if(data == 0 ){
+									html += 
+									'<span class="svg-icon svg-icon-danger svg-icon-2x">'+                                  
+                                        '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">'+
+                                        '<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">'+
+                                            '<rect x="0" y="0" width="24" height="24"/>'+
+                                            '<rect fill="#000000" opacity="0.3" x="2" y="6" width="21" height="12" rx="6"/>'+
+                                            '<circle fill="#000000" cx="17" cy="12" r="4"/>'+
+                                        '</g>';																							
+								  }
+								 html += '</a>';
+                               return html;
+							}
+						  
+						 },	
+                    { 'data': '', 'name': 'Action',
+
+                       "render": function(data, type, row, meta){							
+							var html = '<a id="deletedGlobal" data-href="/item/deleteSellingItem/'+row._id+'" class="btn btn-icon btn-danger mb-1 btn-sm"> <i class="flaticon-delete"></i> </a>';							
+							return html;
+						}
+                    }
+                    ],
+                "columnDefs": [
+                    {
+                        "searchable": false,
+                        "orderable": false, "targets": [0,1,2,4,5,7,8] 
+                    },
+                ]
+            });
+            t.on('draw.dt', function () { 
+					var info = t.page.info(); 
+					t.column(0, {
+						 search: 'applied',
+						  order: 'applied', 
+						  page: 'applied' })
+					.nodes().each(function (cell, i)
+					 {
+						  cell.innerHTML = i + 1 + info.start; 
+						}); });
+            });
+});
+ </script>
+   <script>
+     $(document).ready(function() {      
+     var dataTable = $('#mytable').dataTable();   	
+     $("#searchbox").keyup(function() {		
+     dataTable.fnFilter(this.value);
+         });    
+     });
+  </script>
+    <!--end::Page Scripts-->
+    
+</body>
+<!--end::Body-->
+
+</html>
